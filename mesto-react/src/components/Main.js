@@ -39,13 +39,13 @@ function Main({ onEditProfile, onAddPlace, onEditAvatar }) {
                 { cards.map((card) => {
                     return (
                 <div className="cards__item">
-                    <img className="cards__image" src="#" />
+                    <img className="cards__image" src={card.link} />
                     <button type="button" className="button button__remove"></button>
                     <div className="cards__date">
-                        <h2 className="cards__place"></h2>
+                        <h2 className="cards__place">{card.name}</h2>
                         <div className="cards__like">
                             <button className="cards__button" type="button" aria-label="Нравится"></button>
-                            <h4 className="cards__counter"></h4>
+                            <h4 className="cards__counter">{card.likes.length}</h4>
                         </div>
                     </div>
                 </div>)
