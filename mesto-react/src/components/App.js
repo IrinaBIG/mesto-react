@@ -59,9 +59,9 @@ function App() {
           <Button nameButton="Создать"></Button>
         </PopupWithForm>
 
-        <PopupWithForm name="popup_confirmation" title="Вы уверены?" isOpen={isAddPlacePopupOpen} isClose={closeAllPopups}>
+        {/* <PopupWithForm name="popup_confirmation" title="Вы уверены?" isOpen={} isClose={closeAllPopups}>
           <Button nameButton="Да"></Button>
-        </PopupWithForm>
+        </PopupWithForm> */}
 
       </div>
 

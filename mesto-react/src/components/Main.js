@@ -4,22 +4,22 @@ import api from '../utils/Api';
 function Main({ onEditProfile, onAddPlace, onEditAvatar }) {
 
     const [userName, setUserName] = useState('Жак');
-    
-    function handleUserNameChange (userName) {     
-        api.editUserInfo(userName)
-            .then((res) => {
-                console.log(res);  
-                setUserName(res);
-            })
-    }
+    const [userDescription, setUserDescription] = useState('Исследователь');
+    const [userAvatar, setUserAvatar] = useState('');
 
-    // useEffect(() => {
-    //     handleUserNameChange(userName)
-    // }, []);
+    useEffect(() => {
+        Promise.all([api.getUser(), api.getCards()])
+        .then(([profile, cards]) => {
+            setUserName(profile.name); // name, about, avatar - так названы данные на сервере
+            setUserDescription(profile.about);
+            setUserAvatar(profile.avatar);
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+    }, []);
     
-    const [userDescription, setUserDescription] = useState('Исследователь')
-
-    const [userAvatar, setUserAvatar] = useState()
+    
 
     return (
         <div className="content">
