@@ -6,6 +6,7 @@ function Main({ onEditProfile, onAddPlace, onEditAvatar }) {
     const [userName, setUserName] = useState('Жак');
     const [userDescription, setUserDescription] = useState('Исследователь');
     const [userAvatar, setUserAvatar] = useState('');
+    const [cards, setCards] = useState([]);
 
     useEffect(() => {
         Promise.all([api.getUser(), api.getCards()])
@@ -13,6 +14,7 @@ function Main({ onEditProfile, onAddPlace, onEditAvatar }) {
             setUserName(profile.name); // name, about, avatar - так названы данные на сервере
             setUserDescription(profile.about);
             setUserAvatar(profile.avatar);
+            setCards(cards);
         })
         .catch((err) => {
             console.log(err);
