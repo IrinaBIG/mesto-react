@@ -10,23 +10,23 @@ function Main({ onEditProfile, onAddPlace, onEditAvatar }) {
 
     useEffect(() => {
         Promise.all([api.getUser(), api.getCards()])
-        .then(([profile, cards]) => {
-            setUserName(profile.name); // name, about, avatar - так названы данные на сервере
-            setUserDescription(profile.about);
-            setUserAvatar(profile.avatar);
-            setCards(cards);
-        })
-        .catch((err) => {
-            console.log(err);
-        })
+            .then(([profile, cards]) => {
+                setUserName(profile.name); // name, about, avatar - так названы данные на сервере
+                setUserDescription(profile.about);
+                setUserAvatar(profile.avatar);
+                setCards(cards);
+            })
+            .catch((err) => {
+                console.log(err);
+            })
     }, []);
-    
-    
+
+
 
     return (
         <div className="content">
             <section className="profile">
-                <div className="profile__avatar" onClick={onEditAvatar} style={ { backgroundImage: `url(${userAvatar})` } }></div>
+                <div className="profile__avatar" onClick={onEditAvatar} style={{ backgroundImage: `url(${userAvatar})` }}></div>
                 <div className="profile__item">
                     <h1 className="profile__name">{userName}</h1>
                     <button className="profile__button-edit" onClick={onEditProfile} type="button" aria-label="Редактировать"></button>
@@ -34,7 +34,23 @@ function Main({ onEditProfile, onAddPlace, onEditAvatar }) {
                 <p className="profile__activity">{userDescription}</p>
                 <button className="profile__button-add" onClick={onAddPlace} type="button" aria-label="Добавить"></button>
             </section>
+
             <section className="cards">
+                { cards.map((card) => {
+                    return (
+                <div className="cards__item">
+                    <img className="cards__image" src="#" />
+                    <button type="button" className="button button__remove"></button>
+                    <div className="cards__date">
+                        <h2 className="cards__place"></h2>
+                        <div className="cards__like">
+                            <button className="cards__button" type="button" aria-label="Нравится"></button>
+                            <h4 className="cards__counter"></h4>
+                        </div>
+                    </div>
+                </div>)
+                   
+                })}
             </section>
         </div>
     );

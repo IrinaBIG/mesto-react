@@ -54,8 +54,12 @@ function App() {
         </PopupWithForm>
 
         <PopupWithForm name="popup_place_add-card" title="Новое место" isOpen={isAddPlacePopupOpen} isClose={closeAllPopups}>
-          <Input placeholder="Название" />
-          <Input placeholder="Ссылка на картинку" />
+          <Input 
+          placeholder="Название"
+          />
+          <Input
+          placeholder="Ссылка на картинку" 
+          />
           <Button nameButton="Создать"></Button>
         </PopupWithForm>
 
