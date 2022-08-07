@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import api from '../utils/Api';
 
-function Main({ onEditProfile, onAddPlace, onEditAvatar }) {
+function Main({ onEditProfile, onAddPlace, onEditAvatar, onDelCard }) {
 
     const [userName, setUserName] = useState('Жак');
     const [userDescription, setUserDescription] = useState('Исследователь');
@@ -40,7 +40,7 @@ function Main({ onEditProfile, onAddPlace, onEditAvatar }) {
                     return (
                 <div className="cards__item">
                     <img className="cards__image" src={card.link} />
-                    <button type="button" className="button button__remove"></button>
+                    <button type="button" className="button button__remove" onClick={onDelCard}></button>
                     <div className="cards__date">
                         <h2 className="cards__place">{card.name}</h2>
                         <div className="cards__like">
