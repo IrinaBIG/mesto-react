@@ -1,9 +1,6 @@
-import React, { children } from 'react';
+// import { children } from 'react';
 
 function PopupWithForm({ name, title, children, isOpen, isClose }) {
-
-    // const [] = React.useState();
-
 
     return (
         <>
@@ -17,9 +14,6 @@ function PopupWithForm({ name, title, children, isOpen, isClose }) {
                 </div>
             </div>
 
-
-
-
       {/* <div className="popup popup_confirmation">
         <div className="popup__content">
           <button className="popup__close" type="button"></button>
@@ -29,9 +23,6 @@ function PopupWithForm({ name, title, children, isOpen, isClose }) {
           </form>
         </div>
       </div>  */}
-
-
-
         </>
     );
 }

@@ -1,30 +1,25 @@
-import React from 'react';
+import { useEffect, useState } from 'react';
 import api from '../utils/Api';
 
 function Main({ onEditProfile, onAddPlace, onEditAvatar }) {
 
-    const [userName, setUserName] = React.useState('Жак');
+    const [userName, setUserName] = useState('Жак');
     
-    // React.useEffect(() => {
-       
-    // });
-
-    function handleUserNameChange () {
-            
+    function handleUserNameChange (userName) {     
         api.editUserInfo(userName)
             .then((res) => {
-                console.log(res);
-                
+                console.log(res);  
                 setUserName(res);
             })
-   
-}
+    }
 
+    // useEffect(() => {
+    //     handleUserNameChange(userName)
+    // }, []);
     
-    const [userDescription, setUserDescription] = React.useState('Исследователь')
+    const [userDescription, setUserDescription] = useState('Исследователь')
 
-    const [userAvatar, setUserAvatar] = React.useState()
-
+    const [userAvatar, setUserAvatar] = useState()
 
     return (
         <div className="content">
@@ -40,7 +35,6 @@ function Main({ onEditProfile, onAddPlace, onEditAvatar }) {
             <section className="cards">
             </section>
         </div>
-
     );
 }
 

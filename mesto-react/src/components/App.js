@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
 import PopupWithForm from './PopupWithForm';
 import Input from './Input';
 import Button from './Button';
-
 
 function App() {
 
@@ -33,6 +32,7 @@ function App() {
   return (
 
     <div className="body">
+
       <div className="page">
         <Header />,
         <Main
@@ -57,6 +57,10 @@ function App() {
           <Input placeholder="Название" />
           <Input placeholder="Ссылка на картинку" />
           <Button nameButton="Создать"></Button>
+        </PopupWithForm>
+
+        <PopupWithForm name="popup_confirmation" title="Вы уверены?" isOpen={isAddPlacePopupOpen} isClose={closeAllPopups}>
+          <Button nameButton="Да"></Button>
         </PopupWithForm>
 
       </div>

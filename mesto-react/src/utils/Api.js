@@ -1,6 +1,3 @@
-// const api = new Api('https://mesto.nomoreparties.co/v1/cohort-45');
-// 'https://mesto.nomoreparties.co/v1/cohort-45';
-
 class Api {
   constructor(url, token) {
     this._url = url;
@@ -92,4 +89,4 @@ class Api {
 
 const api = new Api('https://mesto.nomoreparties.co/v1/cohort-45');
 
-export default api
+export default api;
