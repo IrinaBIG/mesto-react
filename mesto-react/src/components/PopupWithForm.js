@@ -13,16 +13,6 @@ function PopupWithForm({ name, title, children, isOpen, isClose }) {
                     </form>
                 </div>
             </div>
-
-      {/* <div className="popup popup_confirmation">
-        <div className="popup__content">
-          <button className="popup__close" type="button"></button>
-          <h4 className="popup__title popup__title_type_confirmation">Вы уверены?</h4>
-          <form className="form" name="form-in-popup" noValidate>
-            <button type="submit" className="form__button" name="save" aria-label="Да">Да</button>
-          </form>
-        </div>
-      </div>  */}
         </>
     );
 }
