@@ -24,10 +24,10 @@ function App() {
     setIsAddPlacePopupOpen(!isAddPlacePopupOpen);
   }
 
-  const [selectedCard, setSelectedCard] = useState(false)
-  function handleCardClick() {
-    setSelectedCard(!selectedCard);
-    console.log(selectedCard);  
+  const [selectedCard, setSelectedCard] = useState({ isOpen: false, card: {} })
+  function handleCardClick(card) {
+    setSelectedCard({ isOpen: true, card: card });
+    console.log(card);  
   }
 
 
@@ -35,7 +35,7 @@ function App() {
     setIsEditAvatarPopupOpen(false)
     setIsEditProfilePopupOpen(false)
     setIsAddPlacePopupOpen(false)
-    setSelectedCard(false)
+    setSelectedCard({ isOpen: false, card: {} })
   }
 
   return (
@@ -48,6 +48,7 @@ function App() {
           onEditAvatar={handleEditAvatarClick}
           onAddPlace={handleAddPlaceClick}
           onEditProfile={handleEditProfileClick}
+          onCardClick={handleCardClick}
         />,
         <Footer />,
 
@@ -84,11 +85,10 @@ function App() {
           <Button nameButton="Создать"></Button>
         </PopupWithForm>
 
-        <ImagePopup 
-          name="popup_place_image-card"
+        <ImagePopup
+          name="place_image-card"
           card={selectedCard}
           isClose={closeAllPopups}
-          onCardClick={handleCardClick}
         />
 
         {/* <PopupWithForm name="popup_confirmation" title="Вы уверены?" isOpen={} isClose={closeAllPopups}>

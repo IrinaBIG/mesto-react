@@ -4,8 +4,8 @@ import Card from './Card';
 
 function Main({ onEditProfile, onAddPlace, onEditAvatar, onCardClick }) {
 
-    const [userName, setUserName] = useState('Жак');
-    const [userDescription, setUserDescription] = useState('Исследователь');
+    const [userName, setUserName] = useState('');
+    const [userDescription, setUserDescription] = useState('');
     const [userAvatar, setUserAvatar] = useState('');
     const [cards, setCards] = useState([]);
 
@@ -35,15 +35,17 @@ function Main({ onEditProfile, onAddPlace, onEditAvatar, onCardClick }) {
             </section>
 
             <section className="cards">
-                {cards.map((card) => {
+                {cards.map((item) => {
+
                     return (
                         <Card
-                            key={card._id}
-                            name={card.name}
-                            link={card.link}
-                            likes={card.likes}
-                            _id={card._id}
-                            onClick={onCardClick}
+                            card={item}
+                            key={item._id}
+                            name={item.name}
+                            link={item.link}
+                            likes={item.likes}
+                            _id={item._id}
+                            onCardClicks={onCardClick}
                         />
                     )
                 })}
@@ -51,5 +53,6 @@ function Main({ onEditProfile, onAddPlace, onEditAvatar, onCardClick }) {
         </div>
     );
 }
+
 
 export default Main;
