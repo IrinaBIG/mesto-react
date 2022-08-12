@@ -36,15 +36,14 @@ function Main({ onEditProfile, onAddPlace, onEditAvatar, onCardClick }) {
 
             <section className="cards">
                 {cards.map((item) => {
-
                     return (
                         <Card
                             card={item}
                             key={item._id}
                             name={item.name}
-                            link={item.link}
-                            likes={item.likes}
+                            link={item.link} // Roland, не совсем поняла, что тут надо переделать. удаляю строчки (43-46) - удаляются данные с экрана. оставлю так. уточню в слаке - доделаю. подсказку ж просить нельзя у ревьюера )
                             _id={item._id}
+                            likes={item.likes}
                             onCardClicks={onCardClick}
                         />
                     )

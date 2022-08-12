@@ -2,13 +2,11 @@ function Card({ name, link, likes, onCardClicks, card }) {
 
     function handleClick() {
         onCardClicks(card);
-        console.log(card);
-        
-    } 
+        // console.log(card);        
+    }
 
     return (
         <div className="cards__item" >
-
             <img className="cards__image"
                 src={link}
                 alt={name}
@@ -28,7 +26,7 @@ function Card({ name, link, likes, onCardClicks, card }) {
                     <h4 className="cards__counter">{likes.length}</h4>
                 </div>
             </div>
-        </div>       
+        </div>
     )
 }
 
