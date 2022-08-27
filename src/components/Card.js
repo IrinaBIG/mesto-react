@@ -1,8 +1,34 @@
-function Card({ name, link, likes, onCardClicks, card }) {
+import React from 'react'; //1.3
+import { CurrentUserContext } from '../contexts/CurrentUserContext';
+
+function Card({ name, link, likes, onCardClicks, card, onCardLike, onCardDelete, onCardDeletePopup }) {
+
+    const currentUser = React.useContext(CurrentUserContext);
+    // Определяем, являемся ли мы владельцем текущей карточки
+    const isOwn = card.owner._id === currentUser._id;
+
+   // Создаём переменную, которую после зададим в `className` для кнопки удаления
+    const cardDeleteButtonClassName = (
+        `${isOwn ? 'button button__remove' : ''}`
+    );
+
+    // Определяем, есть ли у карточки лайк, поставленный текущим пользователем
+    const isLiked = card.likes.some((item) => item._id === currentUser._id);
+
+    // Создаём переменную, которую после зададим в `className` для кнопки лайка
+    const cardLikeButtonClassName = `cards__button ${isLiked && "cards__button_active"}`;
+
+    function handleLikeClick () {
+        onCardLike(card);
+    }
+
+    function handleDeleteClick (){
+        // onCardDelete(card);
+        onCardDeletePopup(card);
+    }
 
     function handleClick() {
-        onCardClicks(card);
-        // console.log(card);        
+        onCardClicks(card);  
     }
 
     return (
@@ -12,16 +38,20 @@ function Card({ name, link, likes, onCardClicks, card }) {
                 alt={name}
                 onClick={handleClick}
             />
-            <button className="button button__remove"
+            {isOwn && <button 
+                className={cardDeleteButtonClassName}
+                onClick={handleDeleteClick}
                 type="button">
-
-            </button>
+            </button>} 
+            {/* // isOwn && - реализация отражения кнопки удаления на своих карточках */}
             <div className="cards__date">
                 <h2 className="cards__place">{name}</h2>
                 <div className="cards__like">
-                    <button className="cards__button"
+                    <button className={cardLikeButtonClassName}
                         type="button"
-                        aria-label="Нравится">
+                        aria-label="Нравится"
+                        onClick={handleLikeClick}
+                        >
                     </button>
                     <h4 className="cards__counter">{likes.length}</h4>
                 </div>
