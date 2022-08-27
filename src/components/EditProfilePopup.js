@@ -9,28 +9,29 @@ function EditProfilePopup({ isOpen, isClose, onUpdateUser }) {
     const [description, setDescription] = useState('');
     const currentUser = useContext(CurrentUserContext);
 
-    useEffect(() => {
-        setName(currentUser.name);
-        setDescription(currentUser.about);
-    }, [currentUser]);
-
-    function handleChangeName(e) {
-        setName(e.target.value);
-        console.log(name);
-    }
-
-    function handleChangeDescription(e) {
-        setDescription(e.target.value);
-        console.log(description);
-    }
-
     function handleSubmit(e) {
         // Запрещаем браузеру переходить по адресу формы
         e.preventDefault();
         // Передаём значения управляемых компонентов во внешний обработчик
-        onUpdateUser({ name, about: description });
+        onUpdateUser({name, about: description});
         console.log(onUpdateUser());
     }
+
+    function handleChangeName(e) {
+        setName(e.target.value);
+        // console.log(name);
+    }
+
+    function handleChangeDescription(e) {
+        setDescription(e.target.value);
+        // console.log(description);
+    }
+
+    useEffect(() => {
+        setName(currentUser.name);
+        // console.log(currentUser.name)
+        setDescription(currentUser.about);
+    }, [currentUser]);
 
     return (
         <PopupWithForm

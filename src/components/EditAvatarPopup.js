@@ -1,10 +1,8 @@
-import React from 'react'; //1.3
-import { useState, useRef } from 'react'; //1.3
+import { useRef } from 'react';
 import PopupWithForm from './PopupWithForm';
 
 function EditAvatarPopup({ isOpen, isClose, onUpdateAvatar }) {
-    // const [value, setValue] = React.useState({input: ''});
-    // const currentUser = React.useContext(CurrentUserContext);
+    
     const avatarRef = useRef();
 
     function handleSubmit(e) {

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
-import PopupWithForm from './PopupWithForm';
+import WithConfirmationPopup from './WithConfirmationPopup';
 import ImagePopup from './ImagePopup';
 import api from '../utils/Api';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
@@ -37,25 +37,6 @@ function App() {
       document.addEventListener('keydown', handleCloseEsc);
       return () => {
         document.removeEventListener('keydown', handleCloseEsc);
-      };
-    }
-  }, []);
-
-  useEffect(() => {
-    if (
-      isEditAvatarPopupOpen ||
-      isEditProfilePopupOpen ||
-      isAddPlacePopupOpen ||
-      selectedCard
-    ) {
-      function handleCloseOverlay(e) {
-        if (e.target === e.currentTarget) {
-          closeAllPopups();
-        }
-      }
-      document.addEventListener('mousedown', handleCloseOverlay);
-      return () => {
-        document.removeEventListener('mousedown', handleCloseOverlay);
       };
     }
   }, []);
@@ -204,7 +185,13 @@ function App() {
             isClose={closeAllPopups}
           />
 
-          <PopupWithForm
+          <WithConfirmationPopup
+             isOpen={isPopupWithConfirmation}
+             isClose={closeAllPopups}
+             onSubmit={handleCardDelete}
+          />
+
+          {/* <PopupWithForm
             name="popup_confirmation"
             title="Вы уверены?"
             isOpen={isPopupWithConfirmation}
@@ -212,7 +199,7 @@ function App() {
             onSubmit={handleCardDelete}
             buttonText="Да"
           >
-          </PopupWithForm>
+          </PopupWithForm> */}
 
         </div>
       </div>

@@ -11,7 +11,7 @@ function AddPlacePopup({ isOpen, isClose, onAddPlace }) {
 
     function handleAddPlaceSubmit(e) {
         e.preventDefault();
-        onAddPlace(addPlaceNameRef.current.value, addPlaceLinkRef.current.value);       
+        onAddPlace({name: addPlaceNameRef.current.value}, {link: addPlaceLinkRef.current.value});       
     }
 
     return (
