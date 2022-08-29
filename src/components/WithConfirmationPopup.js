@@ -13,7 +13,6 @@ function WithConfirmationPopup({ isOpen, isClose, onSubmit }) {
             isOpen={isOpen}
             isClose={isClose}
             onSubmit={handleSubmit}
-            // buttonText="Да"
         >
             <button type="submit" className="form__button" name="save" aria-label="Да">Да</button>
         </PopupWithForm>

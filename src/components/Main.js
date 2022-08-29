@@ -1,4 +1,4 @@
-import React from 'react'; //1.3
+import React from 'react';
 import Card from './Card';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
@@ -18,7 +18,7 @@ function Main({ cards, onEditProfile, onAddPlace, onEditAvatar, onCardClick, onC
                 <button className="profile__button-add" onClick={onAddPlace} type="button" aria-label="Добавить"></button>
             </section>
 
-            <section className="cards">           
+            <section className="cards">
                 {cards.map((item) => {
                     return (
                         <Card
@@ -31,7 +31,7 @@ function Main({ cards, onEditProfile, onAddPlace, onEditAvatar, onCardClick, onC
                             onCardClicks={onCardClick}
                             onCardLike={onCardLike}
                             onCardDelete={onCardDelete}
-                            onCardDeletePopup={onCardDeletePopup}                           
+                            onCardDeletePopup={onCardDeletePopup}                 
                         />
                     )                    
                 })}

@@ -1,11 +1,11 @@
-function PopupWithForm({ name, title, children, isOpen, isClose, buttonText, onSubmit }) {
+function PopupWithForm({ name, title, children, isOpen, isClose, onSubmit }) {
     function handleCloseOverlay(e) {
         if (e.target === e.currentTarget) {
             isClose();
         }
     }
     return (
-        <div className={`popup ${name} ${isOpen && "popup_is-active"}`} onClick={handleCloseOverlay} >
+        <div className={`popup ${name} ${isOpen && "popup_is-active"}`} onMouseDown={handleCloseOverlay} >
             <div className="popup__content">
                 <button className="popup__close" type="button" onClick={isClose}></button>
                 <h4 className="popup__title">{title}</h4>

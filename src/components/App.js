@@ -28,8 +28,7 @@ function App() {
       isEditProfilePopupOpen ||
       isAddPlacePopupOpen ||
       selectedCard ||
-      isPopupWithConfirmation
-    ) {
+      isPopupWithConfirmation) {
       function handleCloseEsc(e) {
         if (e.key === 'Escape') {
           closeAllPopups();
@@ -94,10 +93,8 @@ function App() {
 
   function handleUpdateUser(data) {
     api.editUserInfo(data)
-    
       .then((res) => {
         setCurrentUser(res);
-        console.log(res)
         closeAllPopups();
       })
       .catch((err) => {
@@ -189,21 +186,10 @@ function App() {
           />
 
           <WithConfirmationPopup
-             isOpen={isPopupWithConfirmation}
-             isClose={closeAllPopups}
-             onSubmit={handleCardDelete}
-          />
-
-          {/* <PopupWithForm
-            name="popup_confirmation"
-            title="Вы уверены?"
             isOpen={isPopupWithConfirmation}
             isClose={closeAllPopups}
             onSubmit={handleCardDelete}
-            buttonText="Да"
-          >
-          </PopupWithForm> */}
-
+          />
         </div>
       </div>
     </CurrentUserContext.Provider>

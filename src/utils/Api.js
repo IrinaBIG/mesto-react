@@ -32,7 +32,7 @@ class Api {
   }
 
   editUserInfo(data) {
-    console.log(data); 
+    // console.log(data); 
     return fetch(`${this._url}/users/me`, {
       headers: this._headers,
       method: 'PATCH',
