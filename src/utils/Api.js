@@ -8,12 +8,12 @@ class Api {
     }
   }
 
-  async _checkResponse (res) {
+  _checkResponse = (res) => {
     if (res.ok) {
+      // console.dir(res)
       return res.json();
     }
-    const err = await res.json();
-    return Promise.reject(err);
+    return Promise.reject(`Возникла ошибка: ${res.status}`);
   }
 
   getCards() {
@@ -31,30 +31,22 @@ class Api {
     .then(this._checkResponse)
   }
 
-  editUserInfo(firstname, work) {
-    const body = {
-      name: firstname,
-      about: work
-    };
-
+  editUserInfo(data) {
+    console.log(data); 
     return fetch(`${this._url}/users/me`, {
       headers: this._headers,
       method: 'PATCH',
-      body: JSON.stringify(body)
+      body: JSON.stringify(data)
     })
     .then(this._checkResponse)
   }
 
-  addCard(newPlace, linkPlace) {
-    const body = {
-      name: newPlace,
-      link: linkPlace
-    }
-
+    addCard(data) {
+    
     return fetch(`${this._url}/cards`, {
       headers: this._headers,
       method: 'POST',
-      body: JSON.stringify(body),
+      body: JSON.stringify(data)
     })
     .then(this._checkResponse)
   }

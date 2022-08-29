@@ -11,7 +11,7 @@ function PopupWithForm({ name, title, children, isOpen, isClose, buttonText, onS
                 <h4 className="popup__title">{title}</h4>
                 <form className="form" id="profile-form" name={name} onSubmit={onSubmit} noValidate>
                     {children}
-                    <button type="submit" className="form__button" name="save" aria-label="{buttonText}">{buttonText}</button>
+                    {/* <button type="submit" className="form__button" name="save" aria-label="{buttonText}">{buttonText}</button> */}
                 </form>
             </div>
         </div>

@@ -22,11 +22,11 @@ function EditAvatarPopup({ isOpen, isClose, onUpdateAvatar }) {
         >
             <input
                 type="url"
+                ref={avatarRef}
                 id="avatar-input"
                 className="form__input form__input_type_avatar-place"
                 name="avatarPlace"
-                ref={avatarRef}
-                // value={value}
+                // value=""
                 placeholder="Ссылка на картинку"
                 required />
 
@@ -34,6 +34,7 @@ function EditAvatarPopup({ isOpen, isClose, onUpdateAvatar }) {
                 id="avatar-input-error"
                 className="form__error"
             />
+            <button type="submit" className="form__button" name="save" aria-label="Сохранить">Сохранить</button>
         </PopupWithForm>
     );
 }

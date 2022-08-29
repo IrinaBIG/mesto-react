@@ -27,7 +27,8 @@ function App() {
       isEditAvatarPopupOpen ||
       isEditProfilePopupOpen ||
       isAddPlacePopupOpen ||
-      selectedCard
+      selectedCard ||
+      isPopupWithConfirmation
     ) {
       function handleCloseEsc(e) {
         if (e.key === 'Escape') {
@@ -93,8 +94,10 @@ function App() {
 
   function handleUpdateUser(data) {
     api.editUserInfo(data)
+    
       .then((res) => {
         setCurrentUser(res);
+        console.log(res)
         closeAllPopups();
       })
       .catch((err) => {
